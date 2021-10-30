@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">view_pager_example</string>
+    <string name="tab_name">タブ</string>
 </resources>
