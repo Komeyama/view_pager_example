@@ -52,12 +52,26 @@ class MainActivity : AppCompatActivity() {
                 }
                 setTabTextColor(position, R.color.purple_200)
             }
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                initTextColor()
+            }
         })
     }
 
     private fun setTabTextColor(position: Int, colorID: Int) {
         binding.tabLayout.getTabAt(position)?.customView?.findViewById<TextView>(R.id.tab_text)
             ?.setTextColor(ContextCompat.getColor(applicationContext, colorID))
+    }
+
+    private fun initTextColor() {
+        binding.pager.findViewById<TextView>(R.id.text)
+            ?.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
     }
 
     private inner class PagerAdapter(f: FragmentActivity) : FragmentStateAdapter(f) {

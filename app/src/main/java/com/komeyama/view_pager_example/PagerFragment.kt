@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.komeyama.view_pager_example.databinding.FragmentPagerBinding
 
@@ -34,6 +35,10 @@ class PagerFragment : Fragment(R.layout.fragment_pager) {
         super.onViewCreated(view, savedInstanceState)
         val tabID = arguments?.getInt(TAB_POSITION) ?: -1
         binding.text.text = ("tab no: $tabID").toString()
+
+        binding.highlightButton.setOnClickListener {
+            binding.text.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_200))
+        }
     }
 
 }
